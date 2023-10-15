@@ -10,10 +10,15 @@ from pygame_helper import initialize, bound
 screen = pygame.display.set_mode([500,500])
 boundaries = bound(30,470)
 red_border = [boundaries.x,boundaries.y-boundaries.x]
-gravity = 9.81*100 # 9.81m/s2
+gravity = 981 #0  or 981
 
 # ball stuff:
-rows = 10
+
+# big
+# rows = 5
+# radius = 10
+#small
+rows = 5
 radius = 3
 wall_dampen = 0.85
 particle_dampen = 0.97
@@ -53,7 +58,7 @@ while running:
 
             if lookAheadCheckCollision(particles, otherPart, radius, time_Elapsed, gravity):
                 totalCollisions += 1
-                resolvePhysicalCollision(particles, otherPart, particle_dampen, radius, gravity)
+                resolvePhysicalCollision(particles, otherPart, gravity, particle_dampen)
 
         particles.resolveWallCollision(wall_dampen, boundaries, radius)
         # print("Location:",particles.location,"| Velocity:",particles.velocity)

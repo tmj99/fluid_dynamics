@@ -11,7 +11,7 @@ class bound:
 def setParticles(allParticles,boundaries,radius,gap,rows,random_v):
     for j in range(0,rows):
         for i in range(1, 1 + int((boundaries.y - boundaries.x) / ( 2 * radius + gap ))):
-            allParticles.append(blob([ boundaries.x + radius + gap + (i-1) * (2 * radius + gap) ,250 + j * (2 * radius + gap)],[ (1-random_v)*200 + random_v*random.randint(0,200)*random.randint(-1,1),(1-random_v)*-200 + random_v*random.randint(0,400)*random.randint(-1,1)],"Blob{}".format(i)))
+            allParticles.append(blob([ boundaries.x + radius + gap + (i-1) * (2 * radius + gap) ,250 - j * (2 * radius + gap)],[ (1-random_v)*200 + random_v*random.randint(0,200)*random.randrange(-1,2,2),(1-random_v)*-200 + random_v*random.randint(0,400)*random.randrange(-1,2,2)],"Blob{}".format(i)))
 
     for i in allParticles:
         print(i.location)
