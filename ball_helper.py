@@ -33,8 +33,11 @@ class blob:
     def drawBall(self, screen, radius):
         pygame.draw.circle(screen, (0, 0, 255), (self.location[0], self.location[1]), radius)
 
+def pythagoras(x1,y1,x2,y2):
+    return math.sqrt((x1-x2)**2 + (y1-y2)**2)
+
 def checkCollision(blob1, blob2, radius):
-    if math.sqrt((blob1.location[0]-blob2.location[0])**2 + (blob1.location[1]-blob2.location[1])**2) < radius * 2:
+    if pythagoras(blob1.location[0],blob2.location[0],blob1.location[1],blob2.location[1]) < radius * 2:
         # print(blob1.name,"and",blob2.name,'collided')
         return True
     else:
@@ -49,6 +52,6 @@ def lookAheadCheckCollision(blob1, blob2, radius, time_Elapsed, gravity):
     else:
         pass
 
-def resolvePhysicalCollision(blob1,blob2,dampen):
+def resolvePhysicalCollision(blob1,blob2,dampen,radius, gravity):
     for i in [0,1]:
         blob1.velocity[i] , blob2.velocity[i] = dampen*blob2.velocity[i] , dampen*blob1.velocity[i]

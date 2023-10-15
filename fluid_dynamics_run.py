@@ -53,7 +53,7 @@ while running:
 
             if lookAheadCheckCollision(particles, otherPart, radius, time_Elapsed, gravity):
                 totalCollisions += 1
-                resolvePhysicalCollision(particles, otherPart,particle_dampen)
+                resolvePhysicalCollision(particles, otherPart, particle_dampen, radius, gravity)
 
         particles.resolveWallCollision(wall_dampen, boundaries, radius)
         # print("Location:",particles.location,"| Velocity:",particles.velocity)
